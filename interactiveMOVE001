@@ -1,0 +1,48 @@
+void setup() {
+  size(800, 500);
+  noStroke();
+}
+
+void draw() {
+   //Scale the mouseX value from 0 to 640 to a range between 0 and 175
+  float c = map(mouseX, 0, width, 0, 175);
+  // Scale the mouseX value from 0 to 640 to a range between 40 and 300
+  float d = map(mouseX, 0, width, 40, 450);
+  float e = map(mouseY,0,width,255,100);
+  background(c,187,e+100,e);
+  
+  
+
+  fill(255, c, 0);
+  noStroke();
+  ellipse(width/2, height/2, d, d); 
+  //fill(c, 255, 255);
+  stroke(c, 255, 255);
+  strokeWeight(7);
+  ellipse(width/2, height/2, d/1.5, d/1.5); 
+  strokeWeight(6);
+  ellipse(width/2, height/2, d/1.75, d/1.75); 
+  strokeWeight(5);
+  ellipse(width/2, height/2, d/2, d/2); 
+  strokeWeight(4);
+  ellipse(width/2, height/2, d/4, d/4);
+  strokeWeight(3);
+  ellipse(width/2, height/2, d/8, d/8);
+  strokeWeight(2);
+  ellipse(width/2, height/2, d/16, d/16);
+  strokeWeight(1);
+  ellipse(width/2, height/2, d/32, d/32);
+
+
+
+  noStroke();
+  fill(255);
+  rect(10,200,mouseX,20);
+  noStroke();
+  fill(255);
+  rect(750,230,-mouseX,20);
+  
+  //text("hello",350,350);
+  //textSize(c);
+
+}
