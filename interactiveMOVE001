@@ -35,6 +35,7 @@ void draw() {
 
 
 
+
   noStroke();
   fill(255);
   rect(10,200,mouseX,20);
