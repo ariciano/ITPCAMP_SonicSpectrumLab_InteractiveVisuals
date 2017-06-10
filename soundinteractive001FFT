@@ -1,0 +1,71 @@
+//import the sound library
+
+import processing.sound.*;
+
+FFT fft;
+AudioIn in;
+int bands = 512;
+float[] spectrum = new float[bands];
+
+void setup() {
+  size(712, 360);
+ 
+    
+  // Create an Input stream which is routed into the Amplitude analyzer
+  fft = new FFT(this, bands);
+  in = new AudioIn(this, 0);
+  
+  // start the Audio Input
+  in.start();
+  
+  // patch the AudioIn
+  fft.input(in);
+}      
+
+ 
+  void draw() {
+  
+  background(mouseX+13,mouseY+47,205,100);
+  
+  
+
+  //background(255,100);
+  fft.analyze(spectrum);
+
+  for(int i = 0; i < bands; i++){
+    
+    strokeWeight(10);
+  // The result of the FFT is normalized
+  // draw the line for frequency band i scaling it up by 5 to get more amplitude.
+  line( i*50, height*100, i*10, height - spectrum[i]*height*6.5 );
+  
+  } 
+  
+ 
+}
+ void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == UP) {
+      
+      stroke(21,250,159);
+    } else if (keyCode == DOWN) {
+      //background(21,250,159);
+      stroke(133,187,255);
+    } 
+   else if (keyCode == LEFT) {
+    //background(255,79,211);
+      stroke(255,199,18);
+  } else if (keyCode == RIGHT) {
+   // background(255,199,18);
+      stroke(255,79,211);
+  } else {
+    stroke(0);
+   // background(255);
+  }
+  }
+
+}
+
+void keyTyped() {
+  println("typed " + int(key) + " " + keyCode);
+}
