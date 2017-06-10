@@ -1,0 +1,128 @@
+
+//p5
+var s;
+var x;
+var y;
+var mic;
+
+
+function setup() { 
+  createCanvas(windowWidth, windowHeight);
+  
+  
+  frameRate(50);
+    // Create an Audio input
+  mic = new p5.AudioIn();
+  
+  // start the Audio Input.
+  // By default, it does not .connect() (to the computer speakers)
+  mic.start();
+} 
+
+function draw() { 
+  var mousePos = map(mouseX, 0, width, 0, 255);
+  background(h+40,h*2,h*3-100,20);
+  
+   // Get the overall volume (between 0 and 1.0)
+  var vol = mic.getLevel();
+  
+  
+var s = second();
+  
+  
+  
+  //moved the coordinate system with 'translate'
+  translate(width/2, height/2);
+  //rotate(radians(90));
+  // Draw an ellipse with height based on volume
+  var h = map(vol*10, 2, 10, height/1.8, 30);
+  
+  noStroke(); 
+  fill(h*2);
+  triangle(30, 75, 58, 20, 86, 75);
+  
+   noStroke(); 
+  fill(h*6);
+  triangle(-30, 75, -58, 20, -85, 75);
+  
+  ellipse(0,0, h-80, h-300);
+  rotate(radians(mouseX));
+  noStroke();
+  fill(h+200, h-30, h+20,60);
+  stroke(255,60);
+  strokeWeight(5)
+  //strokeWeight(h-(random(150,200)));
+  
+    //translate(width/2, height/2);
+  rotate(radians(90));
+  ellipse(0,0, 450, 450);
+  noStroke();
+  fill(mouseX, mouseY, 250,60);
+  
+  stroke(255,60);
+  strokeWeight(5);
+  //strokeWeight(h-(random(150,500)));
+  
+  rotate(radians(90));
+  ellipse(0,0, h-300, h-40);
+  noStroke();
+  //fill(s*(random(-3,9)), s+(random(-50,80)), s*s/2,100)
+  fill(mouseY, mouseX, 250,60);
+  
+  stroke(255,60);
+  strokeWeight(10);
+  //strokeWeight(h-(random(150,200)));
+  
+  rotate(radians(90));
+  ellipse(0,0, h-200, h-200);
+  noStroke();
+  fill(mouseY, mouseX, 150,22);
+  
+  stroke(255,20);
+  strokeWeight(h-(random(150,200)));
+  
+  rotate(radians(90));
+  ellipse(0,0, h-50, h-2);
+  noStroke();
+  fill(mouseY, mouseX, 10,25);
+  stroke(255,60);
+  strokeWeight(h-(random(150,200)));
+  
+  
+  rotate(radians(90));
+  ellipse(0,0, 200, 200);
+  noStroke();
+  fill( mouseX,mouseY, 200,30);
+  
+  
+  stroke(255,60);
+  strokeWeight(h-(random(150,200)));
+  
+ 
+  
+  
+  /*rotate(radians(90));
+  rect(0,0, 400, 400);
+  noStroke();
+  fill(mouseY, mouseX, 200,60);
+  
+ rotate(radians(90));
+  rect(0,0, mouseY*2, mouseX*2);
+  noStroke();
+  fill(s +2, s*2, 200,250);
+  
+  rotate(radians(90));
+  rect(0,0, 350, 350);
+  noStroke();
+  fill(mouseX*2, mouseY*2, 200,150);
+  
+  
+   /*rotate(radians(90));
+  rect(0,0, mouseX*2, mouseY*2);
+  noStroke();
+  //fill(mouseX/2, mouseY/2, 300,150);
+  fill("Current second: \n" + s, s+(-10,10), s*s/2);
+  
+  
+  */
+}
