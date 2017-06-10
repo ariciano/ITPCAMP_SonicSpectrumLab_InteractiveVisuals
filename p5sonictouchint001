@@ -1,0 +1,130 @@
+
+//use on p5
+// with  <script src="libraries/p5.dom.js" type="text/javascript"></script>
+  //  <script src="libraries/p5.sound.js" type="text/javascript"></script>
+  //as libraries
+
+var x = 300;
+var y = 200;
+var d = 90;
+var state = false;
+var A = 20;
+var s;
+
+var mic;
+
+ 
+
+
+function setup() {
+  createCanvas(600, 500);
+  mic = new p5.AudioIn();
+  mic.start();
+  frameRate(20);
+
+}
+
+function draw() {
+  
+  
+ 
+    
+  
+  var vol = mic.getLevel();
+  
+  
+  micLevel = mic.getLevel();
+  
+  var h = map(vol*50, 1, 10, 6, 50);
+ // ellipse(width/2, constrain(height-micLevel*height*5, 0, height), 10, 10);
+  
+  function draw(){
+ // Draw an ellipse with height based on volume
+  
+  }
+  
+  
+   
+
+
+  
+  
+  if (state) {
+    background(1,random(h,h/2)) && fill(h+random(110,250),h+random(150,250),h+random(180,250));
+  } else {
+    background(255) && fill(h+random(110,250),h+random(150,250),h+random(180,250));
+  }
+  /*{
+	ellipse(x,y,d*2,d*2) && noFill();
+  }*/
+  
+  
+  
+  //ellipse(x, y-100, d+(h+=.5), d*h);
+  //E1
+  ellipse(x, y, d, d+(h+=.5));
+
+  
+  //E2
+  ellipse(x/2, y, d+(h+=.5), d);
+  
+  //E3
+  ellipse(x*1.5, y, d+(h+=.5), d);
+  
+  strokeWeight(20);
+
+  
+  
+  line(h,100,5,5);
+  line(h+100, 405, 1085, 405);
+  line(h+150, 385, 1085, 385);
+  line(h,455, 1085, 455);
+  line(h+200, 345, 1085, 345);
+  
+ 
+
+  //E4
+  //ellipse(x-140, y*1.5, d, d);
+
+  
+    
+} 
+
+
+//E1
+function mousePressed() {
+  if (dist(mouseX, mouseY, x, y) < d/2) {
+    state = !state && stroke(250,200,40) && strokeWeight(A+=10) && background(250, 80, 180); //background(250,100,200);
+  }
+ 
+
+  
+  
+  {
+    //E2
+  if (dist(mouseX, mouseY, x/2, y) < d/2) {
+    state = !state && stroke(250,80,180) && strokeWeight(A+=5) && background(100,250,180);
+  }
+    
+    {
+      //E3
+  if (dist(mouseX, mouseY, x*1.5, y) < d/2) {
+    state = !state && stroke(10,250,200) && strokeWeight(A+=20) && background(250,100,40);
+  }
+      /*//E4
+      if (dist(mouseX, mouseY, x-140, y*1.5) < d/2) {
+    state = !state && stroke(80,150,250,150) && strokeWeight(A+=5);
+  }*/
+    }
+    
+     {
+  
+  }
+  
+  }
+  //Little drawing circles
+  ellipse(mouseX,mouseY,5,5);
+  
+
+}
+
